@@ -1,34 +1,37 @@
 {
-  "name": "vscode-ant",
+  "name": "vscode-ant-target-runner",
   "author": {
-    "name": "Nick Heap",
-    "email": "nickheap@gmail.com",
-    "url": "https://github.com/NickHeap"
+    "name": "Dangvinh77",
+    "email": "phamdangvinh2002@gmail.com",
+    "url": "https://github.com/Dangvinh77"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NickHeap/vscode-ant"
+    "url": "https://github.com/Dangvinh77/ant_target_runner_VSCext"
   },
-  "displayName": "Ant Target Runner",
+  "displayName": "Ant Java - Target Runner",
   "description": "Run Ant targets, manually & automatically, with colorized Ant output.",
   "version": "0.1.1",
-  "publisher": "nickheap",
+  "publisher": "ant-target-runner",
   "engines": {
     "vscode": ">=1.80.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Programming Languages"
   ],
   "keywords": [
-    "ant"
+    "ant",
+    "ant target",
+    "ant runner"
   ],
   "activationEvents": [
     "onView:antRunnerView",
     "workspaceContains:build.auto"
   ],
   "main": "./src/extension",
-  "icon": "resources/main.png",
+  "icon": "resources/ext-logo.png",
   "contributes": {
     "commands": [
       {
