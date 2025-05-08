@@ -1,0 +1,167 @@
+{
+  "name": "vscode-ant",
+  "author": {
+    "name": "Nick Heap",
+    "email": "nickheap@gmail.com",
+    "url": "https://github.com/NickHeap"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NickHeap/vscode-ant"
+  },
+  "displayName": "Ant Target Runner",
+  "description": "Run Ant targets, manually & automatically, with colorized Ant output.",
+  "version": "0.1.1",
+  "publisher": "nickheap",
+  "engines": {
+    "vscode": ">=1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "ant"
+  ],
+  "activationEvents": [
+    "onView:antRunnerView",
+    "workspaceContains:build.auto"
+  ],
+  "main": "./src/extension",
+  "icon": "resources/main.png",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-ant.selectedAntTarget",
+        "title": "Selected Ant Target"
+      },
+      {
+        "command": "vscode-ant.revealDefinition",
+        "title": "Reveal Definition"
+      },
+      {
+        "command": "vscode-ant.runSelectedAntTarget",
+        "title": "Run Selected Ant Target",
+        "icon": {
+          "light": "resources/icons/light/run.svg",
+          "dark": "resources/icons/dark/run.svg"
+        }
+      },
+      {
+        "command": "vscode-ant.runAntTarget",
+        "title": "Run Ant Target",
+        "icon": {
+          "light": "resources/icons/light/run.svg",
+          "dark": "resources/icons/dark/run.svg"
+        }
+      },
+      {
+        "command": "vscode-ant.runAntDependency",
+        "title": "Run Ant Dependency",
+        "icon": {
+          "light": "resources/icons/light/run.svg",
+          "dark": "resources/icons/dark/run.svg"
+        }
+      },
+      {
+        "command": "vscode-ant.refreshAntTargets",
+        "title": "Refresh Ant Targets",
+        "icon": {
+          "light": "resources/icons/light/refresh.svg",
+          "dark": "resources/icons/dark/refresh.svg"
+        }
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "vscode-ant.runSelectedAntTarget",
+          "when": "view == antRunnerView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "vscode-ant.refreshAntTargets",
+          "when": "view == antRunnerView",
+          "group": "navigation@2"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "vscode-ant.runAntTarget",
+          "when": "view == antRunnerView && viewItem == antTarget",
+          "group": "navigation@1"
+        },
+        {
+          "command": "vscode-ant.revealDefinition",
+          "when": "view == antRunnerView && viewItem == antTarget",
+          "group": "navigation@2"
+        },
+        {
+          "command": "vscode-ant.runAntDependency",
+          "when": "view == antRunnerView && viewItem == antDepends",
+          "group": "navigation@1"
+        },
+        {
+          "command": "vscode-ant.revealDefinition",
+          "when": "view == antRunnerView && viewItem == antDepends",
+          "group": "navigation@2"
+        }
+      ]
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "antRunnerView",
+          "name": "Ant Target Runner"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Ant configuration options",
+      "properties": {
+        "ant.executable": {
+          "type": "string",
+          "default": "ant",
+          "description": "Ant executable path."
+        },
+        "ant.home": {
+          "type": "string",
+          "default": "",
+          "description": "ANT_HOME path."
+        },
+        "ant.envVarsFile": {
+          "type": "string",
+          "default": "build.env",
+          "description": "File name to load env vars from."
+        },
+        "ant.sortTargetsAlphabetically": {
+          "type": "boolean",
+          "default": "true",
+          "description": "Sort targets alphabetically."
+        },
+        "ant.ansiconExe": {
+          "type": "string",
+          "default": "",
+          "description": "Ansicon executable (e.g. D:/tools/ansicon/ansicon.exe) for colorization on windows. Download from (https://github.com/adoxa/ansicon/releases)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.15.15",
+    "eslint": "^9.26.0",
+    "vscode": "^1.1.37"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "lodash": "^4.17.21",
+    "minimatch": "^10.0.1",
+    "xml2js": "^0.6.2"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "autoTargets": [
+    {
+      "filePattern": "src/foldertest/**/*.{p,w,i,cls}",
+      "runTargets": "compile_foldertest",
+      "initialDelayMs": 1000
+    },
+    {
+      "filePattern": "**/*.{p,w,i,cls}",
+      "runTargets": "compile",
+      "initialDelayMs": 1000
+    },
+    {
+      "filePattern": "**/*.test",
+      "runTargets": "test",
+      "initialDelayMs": 1000
+    } 
+  ] 
+}
